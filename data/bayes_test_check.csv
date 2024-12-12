@@ -1,4 +1,4 @@
-,Outlook,Temp,Hum,Win,Play ball
+,Outlook,Temperature,Humidity,Wind,PlayTennis
 1,Sunny,Hot,High,Weak,No
 2,Sunny,Hot,High,Strong,No
 3,Overcast,Hot,High,Weak,Yes
@@ -8,8 +8,7 @@
 7,Overcast,Cool,Normal,Strong,Yes
 8,Sunny,Mild,High,Weak,No
 9,Sunny,Cool,Normal,Weak,Yes
-10,Rainy,Mild,Normal,Weak,Yes
-11,Sunny,Mild,Normal,Strong,Yes
-12,Overcast,Mild,High,Strong,Yes
-13,Overcast,Hot,Normal,Weak,Yes
-14,Rainy,Mild,High,Strong,No
+10,Rainy,Mild,High,Strong,No
+11,Overcast,Mild,High,Strong,Yes
+12,Overcast,Hot,Normal,Weak,Yes
+13,Rainy,Mild,Normal,Weak,Yes

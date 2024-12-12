@@ -45,7 +45,7 @@ def kmeans_algorithm(data, n_clusters=3, max_iter=100, tolerance=1e-4):
     plt.figure(figsize=(8, 6))
     for i in range(n_clusters):
         cluster_points = data[labels == i]
-        plt.scatter(cluster_points[:, 0], cluster_points[:, 1], label=f'Cluster {i}')
+        plt.scatter(cluster_points[:, 0], cluster_points[:, 1], label=f'Cluster {i + 1}')
     plt.scatter(centroids[:, 0], centroids[:, 1], s=300, c='red', marker='X', label='Centroids')
     plt.title('K-Means Clustering (Custom Implementation)')
     plt.xlabel('Feature 1')
@@ -61,6 +61,7 @@ def kmeans_algorithm(data, n_clusters=3, max_iter=100, tolerance=1e-4):
 
     # Chuyển đổi kết quả thành DataFrame
     result_data = pd.DataFrame(data, columns=[f'Feature_{i+1}' for i in range(n_features)])
-    result_data['Cluster'] = labels
+    result_data['Cluster'] = labels + 1
+    result_data.index = np.arange(1, len(result_data) + 1)
 
     return result_data.to_html(), image_path

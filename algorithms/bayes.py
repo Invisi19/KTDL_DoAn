@@ -63,7 +63,6 @@ def bayes_algorithm(data, feature_list=None, feature_values=None, laplace_smooth
         
         # Lưu xác suất của lớp
         class_probabilities[cls] = probability
-    
     # Chọn lớp có xác suất cao nhất
     predicted_class = max(class_probabilities, key=class_probabilities.get)
     

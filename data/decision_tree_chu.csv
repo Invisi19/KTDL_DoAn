@@ -1,0 +1,16 @@
+Thu nhap,Nghe,Tinh trang,so huu,nguy co
+Thap,Van tai,doc than,roi,cao
+Thap,Van tai,doc than,chua,cao
+Cao,Van tai,doc than,roi,thap
+Trung Binh,Truyen thong,doc than,roi,thap
+Trung Binh,Kinh doanh,da ket hon,roi,thap
+Trung Binh,Kinh doanh,da ket hon,chua,cao
+Cao,Kinh doanh,da ket hon,chua,thap
+Thap,Truyen thong,doc than,roi,cao
+Thap,Kinh doanh,da ket hon,roi,thap
+Trung Binh,Truyen thong,da ket hon,roi,thap
+Thap,Truyen thong,da ket hon,chua,thap
+Cao,Truyen thong,doc than,chua,thap
+Cao,Van tai,da ket hon,roi,thap
+Trung Binh,Truyen thong,doc than,chua,cao
+Cao,Kinh doanh,doc than,roi,cao
