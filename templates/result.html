@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>{{ title }}</h1>
+    <h3>Thuật toán: {{ algorithm }}</h3>
+
+    <!-- Hiển thị bảng dữ liệu gốc -->
+    <h4>Dữ liệu gốc:</h4>
+    <div>
+        {{ data_html | safe }}
+    </div>
+
+    {% if algorithm == 'apriori' %}
+        <!-- Hiển thị kết quả Apriori -->
+        <h2>Kết quả thuật toán Apriori:</h2>
+
+        <!-- Tập hợp mục phổ biến -->
+        {% if result['frequent_itemsets'] %}
+            <h3>Tập hợp mục phổ biến:</h3>
+            <div>
+                {{ result['frequent_itemsets'] | safe }}
+            </div>
+        {% else %}
+            <p>Không tìm thấy tập hợp mục phổ biến.</p>
+        {% endif %}
+
+        <!-- Tập phổ biến tối đại -->
+        {% if result['maximal_itemsets'] %}
+            <h3>Tập phổ biến tối đại:</h3>
+            <div>
+                {{ result['maximal_itemsets'] | safe }}
+            </div>
+        {% else %}
+            <p>Không tìm thấy tập phổ biến tối đại.</p>
+        {% endif %}
+
+        <!-- Luật kết hợp -->
+        {% if result['association_rules'] %}
+            <h3>Luật kết hợp:</h3>
+            <div>
+                {{ result['association_rules'] | safe }}
+            </div>
+        {% else %}
+            <p>Không tìm thấy luật kết hợp.</p>
+        {% endif %}
+    {% endif %}
+    
+    <!-- Hiển thị kết quả thuật toán khác -->
+    {% if algorithm != 'apriori' %}
+        <h2>Kết quả của thuật toán {{ algorithm }}</h2>
+        {% if result %}
+            <div class="table-container">
+                <h3>Kết quả phân tích dữ liệu:</h3>
+                <div>{{ result | safe }}</div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <!-- Hiển thị biểu đồ nếu có -->
+    {% if image_path %}
+        <div class="chart-container">
+            <h3>Biểu đồ trực quan hóa:</h3>
+            <img src="{{ url_for('static', filename=image_path) }}" alt="Biểu đồ trực quan hóa">
+        </div>
+    {% endif %}
+
+    <!-- Nút quay lại -->
+    <a href="{{ url_for('choose_algorithm') }}" class="button">Quay lại</a>
+
+{% endblock %}

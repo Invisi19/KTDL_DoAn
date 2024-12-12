@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    
+    <form action="{{ url_for('process_csv', algorithm=algorithm, file=file) }}" method="POST">
+        {% for feature in feature_data %}
+        <div>
+            <label for="selected_{{ feature }}">Chọn giá trị cho {{ feature }}:</label>
+            <select name="selected_{{ feature }}" id="selected_{{ feature }}" required>
+                {% for val in data[feature].unique() %}
+                    <option value="{{val}}">{{val}}</option>
+                <!-- Giá trị sẽ được điền tự động khi xử lý -->
+                {% endfor %}
+            </select>
+        </div>
+        {% endfor %}
+        
+        <div>
+            <label for="laplace_smoothing">Sử dụng kỹ thuật làm trơn Laplace: <input style="width: auto" type="checkbox" name="laplace_smoothing" value="yes" id="laplace_smoothing" checked></label>
+            
+        </div>
+        
+        <button type="submit">Chạy thuật toán Bayes</button>
+{% endblock %}

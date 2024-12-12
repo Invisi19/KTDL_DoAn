@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Chọn thuật toán để chạy</h2>
+
+<form method="GET" action="{{ url_for('upload_csv') }}">
+    <label for="algorithm">Chọn thuật toán:</label>
+    <select name="algorithm" id="algorithm" required>
+        <option value="preprocessing">Tiền xử lý dữ liệu</option>
+        <option value="apriori">Apriori</option>
+        <option value="bayes">Bayes</option>
+        <option value="k-means">K-Means</option>
+        <option value="decision_tree">Cây quyết định</option>
+        <option value="kohonen">Kohonen</option>
+    </select>
+    <button type="submit">Tiếp tục</button>
+</form>
+
+<a href="{{ url_for('index') }}" class="button">Quay lại</a>
+{% endblock %}
