@@ -45,7 +45,17 @@
             <p>Không tìm thấy luật kết hợp.</p>
         {% endif %}
     {% endif %}
-    
+    <!-- Hiển thị cảnh báo -->
+    {% if warnings %}
+        <div class="alert alert-warning">
+            <h4>Cảnh báo:</h4>
+            <ul>
+                {% for warning in warnings %}
+                    <li>{{ warning.strip() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
     <!-- Hiển thị kết quả thuật toán khác -->
     {% if algorithm != 'apriori' %}
         <h2>Kết quả của thuật toán {{ algorithm }}</h2>

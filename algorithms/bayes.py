@@ -23,6 +23,9 @@ def bayes_algorithm(data, feature_list=None, feature_values=None, laplace_smooth
     # Identify target column (last column)
     target_column = data.columns[-1]
     
+    # Initialize warnings
+    warnings = []
+    
     # Tạo một dictionary để lưu trữ xác suất của từng lớp
     class_probabilities = {}
     
@@ -59,7 +62,13 @@ def bayes_algorithm(data, feature_list=None, feature_values=None, laplace_smooth
                     unique_feature_values = len(data[feature].unique())
                     probability *= (feature_count + 1) / (total_count + unique_feature_values)
                 else:
-                    probability *= feature_count / total_count
+                    # Standard conditional probability
+                    if total_count == 0 or feature_count == 0:
+                        warning_msg = f"Feature '{feature}' with value '{value}' has zero probability for class '{cls}'. Consider enabling Laplace smoothing."
+                        warnings.append(warning_msg)
+                        probability = 0
+                    else:
+                        probability *= feature_count / total_count
         
         # Lưu xác suất của lớp
         class_probabilities[cls] = probability
@@ -90,8 +99,12 @@ def bayes_algorithm(data, feature_list=None, feature_values=None, laplace_smooth
         escape=False
     )
     
-    return html_table
-
+    if warnings:
+        return html_table, warnings
+    else:
+        return html_table
+    
+    
 # Ví dụ sử dụng
 # Đọc dữ liệu
 # data = pd.read_csv('bayes-data.csv')
